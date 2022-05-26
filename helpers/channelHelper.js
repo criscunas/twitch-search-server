@@ -1,3 +1,4 @@
+const db = require('../db');
 const axios = require('axios');
 
 const headers = {
@@ -28,17 +29,26 @@ const searchUser = (username) =>
       let followers = await getFollowCount(res.data.data[0].id)
 
       let user = {
-        display_name:  res.data.data[0].display_name,
+        display_name: res.data.data[0].display_name,
         followers: followers
       } 
-
       return user
     })
     .catch(err => {
+      console.log(err)
       return err
     })
 
+const allChannels = () =>
+  db('channels').select()
 
-module.exports = {searchUser}
+
+const insertChannel = (body) => 
+  db('channels')
+    .insert(body)
+    .onConflict('display_name')
+    .ignore()
+
+module.exports = {searchUser, allChannels, insertChannel}
 
 

@@ -5,4 +5,8 @@ router
   .route('/:channel')
   .get(Channel.getChannel);
 
+router
+  .route('/')
+  .get(Channel.allChannels)
+
 module.exports = router;
