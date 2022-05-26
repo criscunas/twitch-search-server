@@ -1,3 +1,3 @@
-## streamforge-server
+## twitch-search-server
 
-Server side for https://github.com/criscunas/streamforge
+Server side for https://github.com/criscunas/twitch-search
